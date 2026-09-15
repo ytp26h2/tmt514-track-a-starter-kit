@@ -1,0 +1,22 @@
+# ytp26h2 預設 .gitignore（可自行增修）
+.env
+.env.*
+*.key
+*.pem
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+build/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+# 大型檔案請勿入庫
+*.pt
+*.bin
+*.mp4
+*.zip
