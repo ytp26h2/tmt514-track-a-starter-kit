@@ -1,0 +1,28 @@
+:root { --navy: #14213d; --blue: #2f5bea; --sky: #8fb3ff; --ink: #1d2433; --muted: #6b7385; --line: #e2e5ec; --wa: #c0392b; }
+* { box-sizing: border-box; }
+body { width: 360px; margin: 0; font: 13.5px/1.55 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; color: var(--ink); background: #f6f4ef; }
+header { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: var(--navy); color: #fff; }
+.logo { background: var(--blue); border-radius: 6px; padding: 2px 6px; font-weight: 800; }
+.title { font-weight: 700; }
+.sub { font-size: 11.5px; color: var(--sky); }
+.sub.err { color: #ffb4ab; }
+.box { background: #fff; border: 1px solid var(--line); border-radius: 10px; margin: 10px; padding: 10px; }
+.k { font-size: 12px; color: var(--muted); margin: 4px 0; }
+.problem-name { font-weight: 700; }
+.note { font-size: 12px; color: var(--muted); }
+select, textarea, input[list] { width: 100%; font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 6px; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
+.choices label { border: 1px solid var(--line); border-radius: 8px; padding: 4px 6px; cursor: pointer; }
+.choices label:has(input:checked) { border-color: var(--blue); background: #eef2fd; }
+details { margin: 6px 0; font-size: 12px; color: var(--muted); }
+.dev { display: grid; gap: 2px; margin-top: 4px; }
+button { width: 100%; border: 0; border-radius: 8px; padding: 9px; background: var(--blue); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+button:disabled { opacity: .5; cursor: wait; }
+#result .card { margin: 10px; padding: 10px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 10px; }
+#result .card.error { border-left-color: var(--wa); background: #fff6f5; }
+.trigger { font-weight: 700; }
+.arrow { color: var(--blue); }
+.log { font-size: 11px; color: var(--muted); padding-left: 16px; margin: 6px 0 0; }
+#cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+#cards li { font-size: 12.5px; border-top: 1px dashed var(--line); padding-top: 6px; }
+#cards .from { color: var(--muted); font-size: 11px; }

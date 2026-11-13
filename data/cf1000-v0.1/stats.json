@@ -1,0 +1,39 @@
+{
+  "problems": 1000,
+  "submissions": 1184,
+  "history": 5045,
+  "users": 40,
+  "checker": {
+    "exact": 726,
+    "float:1e-4": 1,
+    "float:1e-6": 6,
+    "float:1e-9": 2,
+    "ignore_case": 99,
+    "special": 166
+  },
+  "verdicts": {
+    "MEMORY_LIMIT_EXCEEDED": 7,
+    "OK": 1000,
+    "RUNTIME_ERROR": 27,
+    "TIME_LIMIT_EXCEEDED": 63,
+    "WRONG_ANSWER": 87
+  },
+  "sources": {
+    "problems": {
+      "dataset": "open-r1/codeforces",
+      "license": "CC BY 4.0",
+      "sha": "fbe3f6e903ee854eec2e69e9d96d0306cde59baf"
+    },
+    "submissions": {
+      "dataset": "open-r1/codeforces-submissions",
+      "configs": [
+        "selected_incorrect",
+        "selected_accepted"
+      ],
+      "license": "CC BY 4.0",
+      "sha": "07e7bf31f284b0e90e02dfc7ab675d5821e1c068"
+    }
+  },
+  "extracted_at": "2026-11-13T16:06:14.900Z",
+  "selection": "rating 800-2400, editorial 100-6000 chars, LaTeX statements, no interactive/file IO, no *special, deduped by aliases; all problems with incorrect submissions + stratified by rating with tag round-robin; 1 AC + up to 2 incorrect submissions per problem (code <= 4000 chars)"
+}

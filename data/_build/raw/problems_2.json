@@ -1,0 +1,103 @@
+[
+  {
+    "contest_id": "967",
+    "contest_name": "Codeforces Round 477 (rated, Div. 2, based on VK Cup 2018 Round 3)",
+    "contest_start_year": 2018,
+    "description": "These days Arkady works as an air traffic controller at a large airport. He controls a runway which is usually used for landings only. Thus, he has a schedule of planes that are landing in the nearest future, each landing lasts $$$1$$$ minute.\n\nHe was asked to insert one takeoff in the schedule. The takeoff takes $$$1$$$ minute itself, but for safety reasons there should be a time space between the takeoff and any landing of at least $$$s$$$ minutes from both sides.\n\nFind the earliest time when Arkady can insert the takeoff.",
+    "editorial": "This problem requires you to carefully read and understand the statement. First, scan all the landing times, transforming each $$$h$$$ and $$$m$$$ pair into the number of minutes from the starting moment $$$60h + m$$$. Then, there are three possibilities:\n• The first plane takes of not earlier than $$$s + 1$$$ minutes from now. In this case we may put new takeoff right now.\n• Otherwise, if there is a pair of planes with at least $$$2 + 2s$$$ minutes between them. In this case we may choose the earliest such pair and put a new takeoff at $$$1 + s$$$ minutes after the first of these planes.\n• Otherwise, we may always put a new plane in $$$1 + s$$$ minutes after the last plane.\nFinally, print the answer in an $$$h~m$$$ format.",
+    "examples": [
+      {
+        "input": "6 60\n0 0\n1 20\n3 21\n5 0\n19 30\n23 40",
+        "output": "6 1"
+      },
+      {
+        "input": "16 50\n0 30\n1 20\n3 0\n4 30\n6 10\n7 50\n9 30\n11 10\n12 50\n14 30\n16 10\n17 50\n19 30\n21 10\n22 50\n23 59",
+        "output": "24 50"
+      },
+      {
+        "input": "3 17\n0 30\n1 0\n12 0",
+        "output": "0 0"
+      }
+    ],
+    "id": "967/A",
+    "index": "A",
+    "input_format": "The first line of input contains two integers $$$n$$$ and $$$s$$$ ($$$1 \\le n \\le 100$$$, $$$1 \\le s \\le 60$$$) — the number of landings on the schedule and the minimum allowed time (in minutes) between a landing and a takeoff.\n\nEach of next $$$n$$$ lines contains two integers $$$h$$$ and $$$m$$$ ($$$0 \\le h \\le 23$$$, $$$0 \\le m \\le 59$$$) — the time, in hours and minutes, when a plane will land, starting from current moment (i. e. the current time is $$$0$$$ $$$0$$$). These times are given in increasing order.",
+    "memory_limit": 256,
+    "note": "In the first example note that there is not enough time between 1:20 and 3:21, because each landing and the takeoff take one minute.\n\nIn the second example there is no gaps in the schedule, so Arkady can only add takeoff after all landings. Note that it is possible that one should wait more than $$$24$$$ hours to insert the takeoff.\n\nIn the third example Arkady can insert the takeoff even between the first landing.",
+    "output_format": "Print two integers $$$h$$$ and $$$m$$$ — the hour and the minute from the current moment of the earliest time Arkady can insert the takeoff.",
+    "rating": 1100,
+    "tags": [
+      "implementation"
+    ],
+    "time_limit": 1,
+    "title": "Mind the Gap"
+  },
+  {
+    "contest_id": "1006",
+    "contest_name": "Codeforces Round 498 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "You are given an array $$$d_1, d_2, \\dots, d_n$$$ consisting of $$$n$$$ integer numbers.\n\nYour task is to split this array into three parts (some of which may be empty) in such a way that each element of the array belongs to exactly one of the three parts, and each of the parts forms a consecutive contiguous subsegment (possibly, empty) of the original array.\n\nLet the sum of elements of the first part be $$$sum_1$$$, the sum of elements of the second part be $$$sum_2$$$ and the sum of elements of the third part be $$$sum_3$$$. Among all possible ways to split the array you have to choose a way such that $$$sum_1 = sum_3$$$ and $$$sum_1$$$ is maximum possible.\n\nMore formally, if the first part of the array contains $$$a$$$ elements, the second part of the array contains $$$b$$$ elements and the third part contains $$$c$$$ elements, then:\n\n$$$$$$sum_1 = \\sum\\limits_{1 \\le i \\le a}d_i,$$$$$$ $$$$$$sum_2 = \\sum\\limits_{a + 1 \\le i \\le a + b}d_i,$$$$$$ $$$$$$sum_3 = \\sum\\limits_{a + b + 1 \\le i \\le a + b + c}d_i.$$$$$$\n\nThe sum of an empty array is $$$0$$$.\n\nYour task is to find a way to split the array such that $$$sum_1 = sum_3$$$ and $$$sum_1$$$ is maximum possible.",
+    "editorial": "Since the given array consists of positive integers, for each value of $$$a$$$, there can be at most one value of $$$c$$$ such that $$$sum_1 = sum_3$$$. We can use binary search on the array of prefix sums of $$$d$$$ to find the correct value of $$$c$$$, given that it exists. If it does exist and $$$a+c \\le n$$$, this is a candidate solution so we store it. Alternatively, we can use the two pointers trick – when $$$a$$$ increases, $$$c$$$ cannot decrease. Be careful to use 64 bit integers to store sums.\nOverall complexity is $$$O(n \\log n)$$$ or $$$O(n)$$$.",
+    "examples": [
+      {
+        "input": "5\n1 3 1 1 4",
+        "output": "5"
+      },
+      {
+        "input": "5\n1 3 2 1 4",
+        "output": "4"
+      },
+      {
+        "input": "3\n4 1 2",
+        "output": "0"
+      }
+    ],
+    "id": "1006/C",
+    "index": "C",
+    "input_format": "The first line of the input contains one integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$) — the number of elements in the array $$$d$$$.\n\nThe second line of the input contains $$$n$$$ integers $$$d_1, d_2, \\dots, d_n$$$ ($$$1 \\le d_i \\le 10^9$$$) — the elements of the array $$$d$$$.",
+    "memory_limit": 256,
+    "note": "In the first example there is only one possible splitting which maximizes $$$sum_1$$$: $$$[1, 3, 1], [~], [1, 4]$$$.\n\nIn the second example the only way to have $$$sum_1=4$$$ is: $$$[1, 3], [2, 1], [4]$$$.\n\nIn the third example there is only one way to split the array: $$$[~], [4, 1, 2], [~]$$$.",
+    "output_format": "Print a single integer — the maximum possible value of $$$sum_1$$$, considering that the condition $$$sum_1 = sum_3$$$ must be met.\n\nObviously, at least one valid way to split the array exists (use $$$a=c=0$$$ and $$$b=n$$$).",
+    "rating": 1200,
+    "tags": [
+      "binary search",
+      "data structures",
+      "two pointers"
+    ],
+    "time_limit": 1,
+    "title": "Three Parts of the Array"
+  },
+  {
+    "contest_id": "1007",
+    "contest_name": "Codeforces Round 497 (Div. 1)",
+    "contest_start_year": 2018,
+    "description": "You are given an array of integers. Vasya can permute (change order) its integers. He wants to do it so that as many as possible integers will become on a place where a smaller integer used to stand. Help Vasya find the maximal number of such integers.\n\nFor instance, if we are given an array $$$[10, 20, 30, 40]$$$, we can permute it so that it becomes $$$[20, 40, 10, 30]$$$. Then on the first and the second positions the integers became larger ($$$20>10$$$, $$$40>20$$$) and did not on the third and the fourth, so for this permutation, the number that Vasya wants to maximize equals $$$2$$$. Read the note for the first example, there is one more demonstrative test case.\n\nHelp Vasya to permute integers in such way that the number of positions in a new array, where integers are greater than in the original one, is maximal.",
+    "editorial": "The answer is $$$n$$$ minus maximal number of equal elements.\nLet the maximal number of equals be $$$x$$$. Let's proove that $$$n-x$$$ is reachable. It's clear that for every permutation of the array the answer will be the same, so let's sort the array in non-decreasing order. Now we should just make a left shift on $$$x$$$. After it the $$$n-x$$$ right elements will move to a position of a smaller element.\nNow let's proove that the answer is no more than $$$n-x$$$. Let's consider some permutation. It's known that every permutation breaks into cycles. Let's look at two occurences of the same number in the same cycle. Then there is at least one number between them which will move on a postion of a non-smaller element. Even if it the same occurence and even if the length of the cycle is $$$1$$$, we can say that for every occurence of this number there is at least one number which moves on a postion of a non-smaller one. So if some number occurs $$$x$$$ times, there are at least $$$x$$$ bad positions and therefore no more than $$$n-x$$$ good positions.\nTo count the number of equals you can, for instance, use std::map.",
+    "examples": [
+      {
+        "input": "7\n10 1 1 1 5 5 3",
+        "output": "4"
+      },
+      {
+        "input": "5\n1 1 1 1 1",
+        "output": "0"
+      }
+    ],
+    "id": "1007/A",
+    "index": "A",
+    "input_format": "The first line contains a single integer $$$n$$$ ($$$1 \\leq n \\leq 10^5$$$) — the length of the array.\n\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\leq a_i \\leq 10^9$$$) — the elements of the array.",
+    "memory_limit": 256,
+    "note": "In the first sample, one of the best permutations is $$$[1, 5, 5, 3, 10, 1, 1]$$$. On the positions from second to fifth the elements became larger, so the answer for this permutation is 4.\n\nIn the second sample, there is no way to increase any element with a permutation, so the answer is 0.",
+    "output_format": "Print a single integer — the maximal number of the array's elements which after a permutation will stand on the position where a smaller element stood in the initial array.",
+    "rating": 1300,
+    "tags": [
+      "combinatorics",
+      "data structures",
+      "math",
+      "sortings",
+      "two pointers"
+    ],
+    "time_limit": 2,
+    "title": "Reorder the Array"
+  }
+]

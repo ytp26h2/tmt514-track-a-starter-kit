@@ -1,0 +1,289 @@
+[
+ {
+  "id": "1624/A",
+  "title": "Plus One on the Subset",
+  "rating": 800,
+  "tags": [
+   "math"
+  ]
+ },
+ {
+  "id": "1627/C",
+  "title": "Not Assigning",
+  "rating": 1400,
+  "tags": [
+   "constructive algorithms",
+   "dfs and similar",
+   "number theory",
+   "trees"
+  ]
+ },
+ {
+  "id": "1634/A",
+  "title": "Reverse and Concatenate",
+  "rating": 800,
+  "tags": [
+   "greedy",
+   "strings"
+  ]
+ },
+ {
+  "id": "1644/B",
+  "title": "Anti-Fibonacci Permutation",
+  "rating": 800,
+  "tags": [
+   "brute force",
+   "constructive algorithms",
+   "implementation"
+  ]
+ },
+ {
+  "id": "1650/B",
+  "title": "DIV + MOD",
+  "rating": 900,
+  "tags": [
+   "math"
+  ]
+ },
+ {
+  "id": "1658/A",
+  "title": "Marin and Photoshoot",
+  "rating": 800,
+  "tags": [
+   "constructive algorithms",
+   "implementation",
+   "math"
+  ]
+ },
+ {
+  "id": "1661/A",
+  "title": "Array Balancing",
+  "rating": 800,
+  "tags": [
+   "greedy",
+   "math"
+  ]
+ },
+ {
+  "id": "1669/E",
+  "title": "2-Letter Strings",
+  "rating": 1200,
+  "tags": [
+   "data structures",
+   "math",
+   "strings"
+  ]
+ },
+ {
+  "id": "1673/B",
+  "title": "A Perfectly Balanced String?",
+  "rating": 1100,
+  "tags": [
+   "brute force",
+   "greedy",
+   "strings"
+  ]
+ },
+ {
+  "id": "1676/B",
+  "title": "Equal Candies",
+  "rating": 800,
+  "tags": [
+   "greedy",
+   "math",
+   "sortings"
+  ]
+ },
+ {
+  "id": "1679/C",
+  "title": "Rooks Defenders",
+  "rating": 1400,
+  "tags": [
+   "data structures",
+   "implementation"
+  ]
+ },
+ {
+  "id": "1684/B",
+  "title": "Z mod X = C",
+  "rating": 800,
+  "tags": [
+   "constructive algorithms",
+   "math"
+  ]
+ },
+ {
+  "id": "1690/B",
+  "title": "Array Decrements",
+  "rating": 800,
+  "tags": [
+   "greedy",
+   "implementation"
+  ]
+ },
+ {
+  "id": "1692/E",
+  "title": "Binary Deque",
+  "rating": 1200,
+  "tags": [
+   "binary search",
+   "implementation",
+   "two pointers"
+  ]
+ },
+ {
+  "id": "1698/A",
+  "title": "XOR Mixup",
+  "rating": 800,
+  "tags": [
+   "bitmasks",
+   "brute force"
+  ]
+ },
+ {
+  "id": "1702/A",
+  "title": "Round Down the Price",
+  "rating": 800,
+  "tags": [
+   "constructive algorithms"
+  ]
+ },
+ {
+  "id": "1709/A",
+  "title": "Three Doors",
+  "rating": 800,
+  "tags": [
+   "brute force",
+   "greedy",
+   "implementation",
+   "math"
+  ]
+ },
+ {
+  "id": "1714/B",
+  "title": "Remove Prefix",
+  "rating": 800,
+  "tags": [
+   "data structures",
+   "greedy",
+   "implementation"
+  ]
+ },
+ {
+  "id": "1722/C",
+  "title": "Word Game",
+  "rating": 800,
+  "tags": [
+   "data structures",
+   "implementation"
+  ]
+ },
+ {
+  "id": "1732/D1",
+  "title": "Balance (Easy version)",
+  "rating": 1500,
+  "tags": [
+   "brute force",
+   "data structures",
+   "implementation",
+   "number theory"
+  ]
+ },
+ {
+  "id": "1759/A",
+  "title": "Yes-Yes?",
+  "rating": 800,
+  "tags": [
+   "implementation",
+   "strings"
+  ]
+ },
+ {
+  "id": "1772/E",
+  "title": "Permutation Game",
+  "rating": 1700,
+  "tags": [
+   "games"
+  ]
+ },
+ {
+  "id": "1790/E",
+  "title": "Vlad and a Pair of Numbers",
+  "rating": 1400,
+  "tags": [
+   "bitmasks",
+   "constructive algorithms"
+  ]
+ },
+ {
+  "id": "1806/A",
+  "title": "Walking Master",
+  "rating": 800,
+  "tags": [
+   "geometry",
+   "greedy",
+   "math"
+  ]
+ },
+ {
+  "id": "1809/A",
+  "title": "Garland",
+  "rating": 800,
+  "tags": [
+   "implementation"
+  ]
+ },
+ {
+  "id": "1814/A",
+  "title": "Coins",
+  "rating": 800,
+  "tags": [
+   "implementation",
+   "math"
+  ]
+ },
+ {
+  "id": "1833/F",
+  "title": "Ira and Flamenco",
+  "rating": 1700,
+  "tags": [
+   "combinatorics",
+   "constructive algorithms",
+   "data structures",
+   "implementation",
+   "math",
+   "sortings",
+   "two pointers"
+  ]
+ },
+ {
+  "id": "1842/C",
+  "title": "Tenzing and Balls",
+  "rating": 1500,
+  "tags": [
+   "dp"
+  ]
+ },
+ {
+  "id": "1845/C",
+  "title": "Strong Password",
+  "rating": 1400,
+  "tags": [
+   "binary search",
+   "dp",
+   "greedy",
+   "strings"
+  ]
+ },
+ {
+  "id": "1860/B",
+  "title": "Fancy Coins",
+  "rating": 1200,
+  "tags": [
+   "binary search",
+   "brute force",
+   "greedy",
+   "math"
+  ]
+ }
+]

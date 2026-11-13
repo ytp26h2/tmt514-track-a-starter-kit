@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "YTP Starter Kit：Chrome 骨架",
+  "version": "0.2.0",
+  "description": "在 Codeforces 題目頁做 60 秒反思，讓 AI 整理成一張洞見卡（AI 時代的程式解題學習工具挑戰賽 starter kit）。",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YTP：60 秒反思"
+  },
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["http://127.0.0.1:8787/*", "http://localhost:8787/*"]
+}

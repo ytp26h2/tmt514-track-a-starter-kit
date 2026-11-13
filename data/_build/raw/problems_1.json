@@ -1,0 +1,103 @@
+[
+  {
+    "contest_id": "919",
+    "contest_name": "Codeforces Round 460 (Div. 2)",
+    "contest_start_year": 2018,
+    "description": "We often go to supermarkets to buy some fruits or vegetables, and on the tag there prints the price for a kilo. But in some supermarkets, when asked how much the items are, the clerk will say that $$$a$$$ yuan for $$$b$$$ kilos (You don't need to care about what \"yuan\" is), the same as $$$a/b$$$ yuan for a kilo.\n\nNow imagine you'd like to buy $$$m$$$ kilos of apples. You've asked $$$n$$$ supermarkets and got the prices. Find the minimum cost for those apples.\n\nYou can assume that there are enough apples in all supermarkets.",
+    "editorial": "We can use greedy algorithm.\nObviously, if you can pay the least money for per kilo, you can pay the least money for $$$m$$$ kilos. So you can find the minimum of $$$a_i/b_i$$$, we say it is $$$x$$$. Then $$$m \\cdot x$$$ is the final answer.\nTime complexity: $$$\\mathcal{O}(n)$$$.",
+    "examples": [
+      {
+        "input": "3 5\n1 2\n3 4\n1 3",
+        "output": "1.66666667"
+      },
+      {
+        "input": "2 1\n99 100\n98 99",
+        "output": "0.98989899"
+      }
+    ],
+    "id": "919/A",
+    "index": "A",
+    "input_format": "The first line contains two positive integers $$$n$$$ and $$$m$$$ ($$$1 \\leq n \\leq 5\\,000$$$, $$$1 \\leq m \\leq 100$$$), denoting that there are $$$n$$$ supermarkets and you want to buy $$$m$$$ kilos of apples.\n\nThe following $$$n$$$ lines describe the information of the supermarkets. Each line contains two positive integers $$$a, b$$$ ($$$1 \\leq a, b \\leq 100$$$), denoting that in this supermarket, you are supposed to pay $$$a$$$ yuan for $$$b$$$ kilos of apples.",
+    "memory_limit": 256,
+    "note": "In the first sample, you are supposed to buy $$$5$$$ kilos of apples in supermarket $$$3$$$. The cost is $$$5/3$$$ yuan.\n\nIn the second sample, you are supposed to buy $$$1$$$ kilo of apples in supermarket $$$2$$$. The cost is $$$98/99$$$ yuan.",
+    "output_format": "The only line, denoting the minimum cost for $$$m$$$ kilos of apples. Please make sure that the absolute or relative error between your answer and the correct answer won't exceed $$$10^{-6}$$$.\n\nFormally, let your answer be $$$x$$$, and the jury's answer be $$$y$$$. Your answer is considered correct if $$$\\frac{|x - y|}{\\max{(1, |y|)}} \\le 10^{-6}$$$.",
+    "rating": 800,
+    "tags": [
+      "brute force",
+      "greedy",
+      "implementation"
+    ],
+    "time_limit": 2,
+    "title": "Supermarket"
+  },
+  {
+    "contest_id": "1005",
+    "contest_name": "Codeforces Round 496 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "You are given two strings $$$s$$$ and $$$t$$$. In a single move, you can choose any of two strings and delete the first (that is, the leftmost) character. After a move, the length of the string decreases by $$$1$$$. You can't choose a string if it is empty.\n\nFor example:\n\n- by applying a move to the string \"where\", the result is the string \"here\",\n- by applying a move to the string \"a\", the result is an empty string \"\".\n\nYou are required to make two given strings equal using the fewest number of moves. It is possible that, in the end, both strings will be equal to the empty string, and so, are equal to each other. In this case, the answer is obviously the sum of the lengths of the initial strings.\n\nWrite a program that finds the minimum number of moves to make two given strings $$$s$$$ and $$$t$$$ equal.",
+    "editorial": "Let's find the value $$$w$$$ — the length of the longest common suffix of $$$s$$$ and $$$t$$$. You can easily find it in one linear loop: just compare the last letters of $$$s$$$ and $$$t$$$. If they are equal then compare before the last letters of $$$s$$$ and $$$t$$$. And so on.\nThe last $$$w$$$ letters of $$$s$$$ and $$$t$$$ are two equal strings which will be the result of after optimal moves. So the answer is $$$|s|+|t|-2 \\cdot w$$$.",
+    "examples": [
+      {
+        "input": "test\nwest",
+        "output": "2"
+      },
+      {
+        "input": "codeforces\nyes",
+        "output": "9"
+      },
+      {
+        "input": "test\nyes",
+        "output": "7"
+      },
+      {
+        "input": "b\nab",
+        "output": "1"
+      }
+    ],
+    "id": "1005/B",
+    "index": "B",
+    "input_format": "The first line of the input contains $$$s$$$. In the second line of the input contains $$$t$$$. Both strings consist only of lowercase Latin letters. The number of letters in each string is between 1 and $$$2\\cdot10^5$$$, inclusive.",
+    "memory_limit": 256,
+    "note": "In the first example, you should apply the move once to the first string and apply the move once to the second string. As a result, both strings will be equal to \"est\".\n\nIn the second example, the move should be applied to the string \"codeforces\" $$$8$$$ times. As a result, the string becomes \"codeforces\" $$$\\to$$$ \"es\". The move should be applied to the string \"yes\" once. The result is the same string \"yes\" $$$\\to$$$ \"es\".\n\nIn the third example, you can make the strings equal only by completely deleting them. That is, in the end, both strings will be empty.\n\nIn the fourth example, the first character of the second string should be deleted.",
+    "output_format": "Output the fewest number of moves required. It is possible that, in the end, both strings will be equal to the empty string, and so, are equal to each other. In this case, the answer is obviously the sum of the lengths of the given strings.",
+    "rating": 900,
+    "tags": [
+      "brute force",
+      "implementation",
+      "strings"
+    ],
+    "time_limit": 1,
+    "title": "Delete from the Left"
+  },
+  {
+    "contest_id": "978",
+    "contest_name": "Codeforces Round 481 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "There are $$$n$$$ dormitories in Berland State University, they are numbered with integers from $$$1$$$ to $$$n$$$. Each dormitory consists of rooms, there are $$$a_i$$$ rooms in $$$i$$$-th dormitory. The rooms in $$$i$$$-th dormitory are numbered from $$$1$$$ to $$$a_i$$$.\n\nA postman delivers letters. Sometimes there is no specific dormitory and room number in it on an envelope. Instead of it only a room number among all rooms of all $$$n$$$ dormitories is written on an envelope. In this case, assume that all the rooms are numbered from $$$1$$$ to $$$a_1 + a_2 + \\dots + a_n$$$ and the rooms of the first dormitory go first, the rooms of the second dormitory go after them and so on.\n\nFor example, in case $$$n=2$$$, $$$a_1=3$$$ and $$$a_2=5$$$ an envelope can have any integer from $$$1$$$ to $$$8$$$ written on it. If the number $$$7$$$ is written on an envelope, it means that the letter should be delivered to the room number $$$4$$$ of the second dormitory.\n\nFor each of $$$m$$$ letters by the room number among all $$$n$$$ dormitories, determine the particular dormitory and the room number in a dormitory where this letter should be delivered.",
+    "editorial": "We should use that the letter queries are given in increasing order of room numbers. We will store in a variable $$$sum$$$ the number of rooms in already considered dormitories (this variable should have 64-bit type) and in a variable $$$idx$$$ we will store the minimum number of dormitory where the room from the current letter possibly is. Initially, $$$sum = 0$$$ and $$$idx = 1$$$.\nWe will iterate through the letters. Let the current letter should be delivered to the room $$$x$$$. While $$$sum + a_{idx} < x$$$, we increase $$$sum$$$ by $$$a_{idx}$$$ and increase $$$idx$$$ by one. So, we got the dormitory number where room $$$x$$$ is. It only remains to print two integers: $$$idx$$$ (the dormitory number) and $$$(x - sum)$$$ (the room number in this dormitory).",
+    "examples": [
+      {
+        "input": "3 6\n10 15 12\n1 9 12 23 26 37",
+        "output": "1 1\n1 9\n2 2\n2 13\n3 1\n3 12"
+      },
+      {
+        "input": "2 3\n5 10000000000\n5 6 9999999999",
+        "output": "1 5\n2 1\n2 9999999994"
+      }
+    ],
+    "id": "978/C",
+    "index": "C",
+    "input_format": "The first line contains two integers $$$n$$$ and $$$m$$$ $$$(1 \\le n, m \\le 2 \\cdot 10^{5})$$$ — the number of dormitories and the number of letters.\n\nThe second line contains a sequence $$$a_1, a_2, \\dots, a_n$$$ $$$(1 \\le a_i \\le 10^{10})$$$, where $$$a_i$$$ equals to the number of rooms in the $$$i$$$-th dormitory. The third line contains a sequence $$$b_1, b_2, \\dots, b_m$$$ $$$(1 \\le b_j \\le a_1 + a_2 + \\dots + a_n)$$$, where $$$b_j$$$ equals to the room number (among all rooms of all dormitories) for the $$$j$$$-th letter. All $$$b_j$$$ are given in increasing order.",
+    "memory_limit": 256,
+    "note": "In the first example letters should be delivered in the following order:\n\n- the first letter in room $$$1$$$ of the first dormitory\n- the second letter in room $$$9$$$ of the first dormitory\n- the third letter in room $$$2$$$ of the second dormitory\n- the fourth letter in room $$$13$$$ of the second dormitory\n- the fifth letter in room $$$1$$$ of the third dormitory\n- the sixth letter in room $$$12$$$ of the third dormitory",
+    "output_format": "Print $$$m$$$ lines. For each letter print two integers $$$f$$$ and $$$k$$$ — the dormitory number $$$f$$$ $$$(1 \\le f \\le n)$$$ and the room number $$$k$$$ in this dormitory $$$(1 \\le k \\le a_f)$$$ to deliver the letter.",
+    "rating": 1000,
+    "tags": [
+      "binary search",
+      "implementation",
+      "two pointers"
+    ],
+    "time_limit": 4,
+    "title": "Letters"
+  }
+]

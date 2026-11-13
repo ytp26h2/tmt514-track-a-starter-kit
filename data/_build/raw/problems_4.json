@@ -1,0 +1,70 @@
+[
+  {
+    "contest_id": "977",
+    "contest_name": "Codeforces Round 479 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "You are given an integer array of length $$$n$$$.\n\nYou have to choose some subsequence of this array of maximum length such that this subsequence forms a increasing sequence of consecutive integers. In other words the required sequence should be equal to $$$[x, x + 1, \\dots, x + k - 1]$$$ for some value $$$x$$$ and length $$$k$$$.\n\nSubsequence of an array can be obtained by erasing some (possibly zero) elements from the array. You can erase any elements, not necessarily going successively. The remaining elements preserve their order. For example, for the array $$$[5, 3, 1, 2, 4]$$$ the following arrays are subsequences: $$$[3]$$$, $$$[5, 3, 1, 2, 4]$$$, $$$[5, 1, 4]$$$, but the array $$$[1, 3]$$$ is not.",
+    "editorial": "Let $$$dp[x]$$$ be the answer for our problem if the last element of our subsequence equals to $$$x$$$.\nThen we have an easy solution: let's store $$$dp$$$ as a \"std::map\" (C++) or \"HashMap\" (Java). Initially for each $$$i \\in [1..n]$$$ $$$dp[a_i] = 0$$$. Then let's iterate over all $$$a_i$$$ in order of input and try to update $$$dp[a_i]$$$ with a $$$dp[a_i - 1] + 1$$$ ($$$dp[a_i] = max(dp[a_i], dp[a_i - 1] + 1)$$$).\nThen the maximum element of $$$dp$$$ will be our answer. Let it be $$$ans$$$. Then let's find any $$$a_i$$$ such that $$$dp[a_i] = ans$$$. Let it be $$$lst$$$. Then for restoring the answer we need to iterate over all elements of our array in reverse order and if the current element $$$a_k = lst$$$ then push $$$k$$$ to the array of positions of our subsequence and make $$$lst := lst - 1$$$.",
+    "examples": [
+      {
+        "input": "7\n3 3 4 7 5 6 8",
+        "output": "4\n2 3 5 6"
+      },
+      {
+        "input": "6\n1 3 5 2 4 6",
+        "output": "2\n1 4"
+      },
+      {
+        "input": "4\n10 9 8 7",
+        "output": "1\n1"
+      },
+      {
+        "input": "9\n6 7 8 3 4 5 9 10 11",
+        "output": "6\n1 2 3 7 8 9"
+      }
+    ],
+    "id": "977/F",
+    "index": "F",
+    "input_format": "The first line of the input containing integer number $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$) — the length of the array. The second line of the input containing $$$n$$$ integer numbers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the array itself.",
+    "memory_limit": 256,
+    "note": "All valid answers for the first example (as sequences of indices):\n\n- $$$[1, 3, 5, 6]$$$\n- $$$[2, 3, 5, 6]$$$\n\nAll valid answers for the second example:\n\n- $$$[1, 4]$$$\n- $$$[2, 5]$$$\n- $$$[3, 6]$$$\n\nAll valid answers for the third example:\n\n- $$$[1]$$$\n- $$$[2]$$$\n- $$$[3]$$$\n- $$$[4]$$$\n\nAll valid answers for the fourth example:\n\n- $$$[1, 2, 3, 7, 8, 9]$$$",
+    "output_format": "On the first line print $$$k$$$ — the maximum length of the subsequence of the given array that forms an increasing sequence of consecutive integers.\n\nOn the second line print the sequence of the indices of the any maximum length subsequence of the given array that forms an increasing sequence of consecutive integers.",
+    "rating": 1700,
+    "tags": [
+      "dp"
+    ],
+    "time_limit": 2,
+    "title": "Consecutive Subsequence"
+  },
+  {
+    "contest_id": "1000",
+    "contest_name": "Educational Codeforces Round 46 (Rated for Div. 2)",
+    "contest_start_year": 2018,
+    "description": "You are given $$$n$$$ segments on a coordinate line; each endpoint of every segment has integer coordinates. Some segments can degenerate to points. Segments can intersect with each other, be nested in each other or even coincide.\n\nYour task is the following: for every $$$k \\in [1..n]$$$, calculate the number of points with integer coordinates such that the number of segments that cover these points equals $$$k$$$. A segment with endpoints $$$l_i$$$ and $$$r_i$$$ covers point $$$x$$$ if and only if $$$l_i \\le x \\le r_i$$$.",
+    "editorial": "This problem with small coordinates can be solved using partial sums and some easy counting. Let's carry an array $$$cnt$$$, where $$$cnt_i$$$ will be equal to the number of segments that cover the point with coordinate $$$i$$$. How to calculate $$$cnt$$$ in $$$O(n + maxX)$$$?\nFor each segment ($$$l_i, r_i$$$) let's add $$$+1$$$ to $$$cnt_{l_i}$$$ and $$$-1$$$ to $$$cnt_{r_i + 1}$$$. Now build on this array prefix sums and notice that $$$cnt_i$$$ equals the number of segments that cover the point with coordinate $$$i$$$. Then $$$ans_i$$$ will be equal to $$$\\sum\\limits_{j = 0}^{maxX} cnt_j = i$$$. All the answers can be calculated in $$$O(maxX)$$$ in total. So the total complexity of this solution is $$$O(n + maxX)$$$.\nBut in our problem it is too slow to build an entire array $$$cnt$$$. So what should we do? It is obvious that if any coordinate $$$j$$$ is not equals some $$$l_i$$$ or some $$$r_i + 1$$$ then $$$cnt_i = cnt_{i - 1}$$$. So we do not need carry all the positions explicitly. Let's carry all $$$l_i$$$ and $$$r_i + 1$$$ in some logarithmic data structure or let's use the coordinate compression method.\nThe coordinate compression method allows us to transform the set of big sparse objects to the set of small compressed objects maintaining the relative order. In our problems let's make the following things: push all $$$l_i$$$ and $$$r_i + 1$$$ in vector $$$cval$$$, sort this vector, keep only unique values and then use the position of elements in vector $$$cval$$$ instead of original value (any position can be found in $$$O(\\log n)$$$ by binary search or standard methods as lower_bound in C++).\nSo the first part of the solution works in $$$O(n \\log n)$$$. Answer can be calculated using almost the same approach as in solution to this problem with small coordinates. But now we know that between two adjacent elements $$$cval_i$$$ and $$$cval_{i + 1}$$$ there is exactly $$$cval_{i + 1} - cval_{i}$$$ points with answer equals to $$$cnt_i$$$. So if we will iterate over all pairs of the adjacent elements $$$cval_i$$$ and $$$cval_{i + 1}$$$ and add $$$cval_{i + 1} - cval_i$$$ to the $$$ans_{cnt_i}$$$, we will calculate all the answers in $$$O(n)$$$.\nSo the total complexity of the solution is $$$O(n \\log n)$$$.",
+    "examples": [
+      {
+        "input": "3\n0 3\n1 3\n3 8",
+        "output": "6 2 1"
+      },
+      {
+        "input": "3\n1 3\n2 4\n5 7",
+        "output": "5 2 0"
+      }
+    ],
+    "id": "1000/C",
+    "index": "C",
+    "input_format": "The first line of the input contains one integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$) — the number of segments.\n\nThe next $$$n$$$ lines contain segments. The $$$i$$$-th line contains a pair of integers $$$l_i, r_i$$$ ($$$0 \\le l_i \\le r_i \\le 10^{18}$$$) — the endpoints of the $$$i$$$-th segment.",
+    "memory_limit": 256,
+    "note": "The picture describing the first example:\n\nPoints with coordinates $$$[0, 4, 5, 6, 7, 8]$$$ are covered by one segment, points $$$[1, 2]$$$ are covered by two segments and point $$$[3]$$$ is covered by three segments.\n\nThe picture describing the second example:\n\nPoints $$$[1, 4, 5, 6, 7]$$$ are covered by one segment, points $$$[2, 3]$$$ are covered by two segments and there are no points covered by three segments.",
+    "output_format": "Print $$$n$$$ space separated integers $$$cnt_1, cnt_2, \\dots, cnt_n$$$, where $$$cnt_i$$$ is equal to the number of points such that the number of segments that cover these points equals to $$$i$$$.",
+    "rating": 1700,
+    "tags": [
+      "data structures",
+      "implementation",
+      "sortings"
+    ],
+    "time_limit": 3,
+    "title": "Covered Points Count"
+  }
+]

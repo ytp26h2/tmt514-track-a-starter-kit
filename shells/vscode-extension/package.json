@@ -1,0 +1,35 @@
+{
+  "name": "ytp-starter-kit-vscode",
+  "displayName": "YTP Starter Kit：VS Code 骨架",
+  "description": "讓 AI 猜你的程式碼想做什麼、估複雜度、指出風險；也能用資料包的範例測資跑目前的檔案。",
+  "version": "0.2.0",
+  "publisher": "ytp-hackathon",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Education", "Other"],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      { "command": "ytp.pickProblem", "title": "YTP：選擇這個檔案對應的題目" },
+      { "command": "ytp.reviewCode", "title": "YTP：AI 分析目前的程式碼" },
+      { "command": "ytp.runExamples", "title": "YTP：用範例測資跑目前的檔案" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "ytp.reviewCode", "group": "ytp@1" },
+        { "command": "ytp.runExamples", "group": "ytp@2" }
+      ]
+    },
+    "configuration": {
+      "title": "YTP Starter Kit",
+      "properties": {
+        "ytp.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8787",
+          "description": "本機後端（python server/app.py）的網址"
+        }
+      }
+    }
+  }
+}

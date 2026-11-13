@@ -20,3 +20,14 @@ Thumbs.db
 *.bin
 *.mp4
 *.zip
+
+# ---- starter kit ----
+# 上面的 .env.* 會連 .env.example 一起忽略，這份範本要留在 repo 裡
+!.env.example
+# 編譯產物與範例執行時產生的本機資料
+.build/
+*.db
+log.jsonl
+attempts/
+out/
+*.vsix

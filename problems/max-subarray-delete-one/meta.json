@@ -1,0 +1,9 @@
+{
+  "id": "max-subarray-delete-one",
+  "title": "刪一個也可以：最大子陣列和",
+  "source": "原創範例題（主辦方可自由替換成自己的題目）",
+  "tags": ["dp", "kadane", "state-design"],
+  "difficulty": 1400,
+  "files": {"statement": "statement.md", "idea": "idea.md", "ref": "ref.cpp",
+            "brute": "brute.py", "gen": "gen.py", "wrong": ["wrong.cpp"], "tests": "tests"}
+}

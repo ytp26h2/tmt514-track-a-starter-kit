@@ -1,0 +1,72 @@
+[
+  {
+    "contest_id": "1005",
+    "contest_name": "Codeforces Round 496 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "Polycarp likes numbers that are divisible by 3.\n\nHe has a huge number $$$s$$$. Polycarp wants to cut from it the maximum number of numbers that are divisible by $$$3$$$. To do this, he makes an arbitrary number of vertical cuts between pairs of adjacent digits. As a result, after $$$m$$$ such cuts, there will be $$$m+1$$$ parts in total. Polycarp analyzes each of the obtained numbers and finds the number of those that are divisible by $$$3$$$.\n\nFor example, if the original number is $$$s=3121$$$, then Polycarp can cut it into three parts with two cuts: $$$3|1|21$$$. As a result, he will get two numbers that are divisible by $$$3$$$.\n\nPolycarp can make an arbitrary number of vertical cuts, where each cut is made between a pair of adjacent digits. The resulting numbers cannot contain extra leading zeroes (that is, the number can begin with 0 if and only if this number is exactly one character '0'). For example, 007, 01 and 00099 are not valid numbers, but 90, 0 and 10001 are valid.\n\nWhat is the maximum number of numbers divisible by $$$3$$$ that Polycarp can obtain?",
+    "editorial": "There are multiple approaches to solve this problem. We will use dynamic programming approach.\nLet's calculate values of the array $$$z[0 \\dots n]$$$, where $$$z[i]$$$ is the answer for prefix of the length $$$i$$$. Obviously, $$$z[0] := 0$$$, since for the empty string (the prefix of the length $$$0$$$) the answer is $$$0$$$.\nFor $$$i>0$$$ you can find $$$z[i]$$$ in the following way.\nLet's look in the last digit of the prefix of length $$$i$$$. It has index $$$i-1$$$. Either it doesn't belong to segment divisible by $$$3$$$, or it belongs.\nIf it doesn't belongs, it means we can't use the last digit, so $$$z[i] = z[i-1]$$$. If it belongs we need to find shortest $$$s[j \\dots i-1]$$$ that is divisible by $$$3$$$ and try to update $$$z[i]$$$ with the value $$$z[j]+1$$$. It means that we \"bite off\" the shortest divisible by $$$3$$$ suffix and reduce the problem to a previous.\nA number is divisible by $$$3$$$ if and only if sum of its digits is divisible by $$$3$$$. So the task is to find the shortest suffix of $$$s[0 \\dots i-1]$$$ with sum of digits divisible by $$$3$$$. If such suffix is $$$s[j \\dots i-1]$$$ then $$$s[0 \\dots j-1]$$$ and $$$s[0 \\dots i-1]$$$ have the same remainder of sum of digits modulo $$$3$$$.\nLet's maintain $$$fin[0 \\dots 2]$$$ — array of the length $$$3$$$, where $$$fin[r]$$$ is the length of the longest processed prefix with sum of digits equal to $$$r$$$ modulo $$$3$$$. Use $$$fin[r]=-1$$$ if there is no such prefix. It is easy to see that $$$j=fin[r]$$$ where $$$r$$$ is the sum of digits on the $$$i$$$-th prefix modulo $$$3$$$.\nSo to find the maximal $$$j \\le i-1$$$ that substring $$$s[j \\dots i-1]$$$ is divisible by $$$3$$$, just check that $$$fin[r] \\ne -1$$$ and use $$$j=fin[r]$$$, where $$$r$$$ is the sum of digits on the $$$i$$$-th prefix modulo $$$3$$$.\nIt means that to handle case that the last digit belongs to divisible by $$$3$$$ segment, you should try to update $$$z[i]$$$ with value $$$z[fin[r]] + 1$$$. In other words, just do if (fin[r] != -1) z[i] = max(z[i], z[fin[r]] + 1).\nSequentially calculating the values of $$$z [0 \\dots n] $$$, we obtain a linear $$$O(n)$$$ solution.",
+    "examples": [
+      {
+        "input": "3121",
+        "output": "2"
+      },
+      {
+        "input": "6",
+        "output": "1"
+      },
+      {
+        "input": "1000000000000000000000000000000000",
+        "output": "33"
+      },
+      {
+        "input": "201920181",
+        "output": "4"
+      }
+    ],
+    "id": "1005/D",
+    "index": "D",
+    "input_format": "The first line of the input contains a positive integer $$$s$$$. The number of digits of the number $$$s$$$ is between $$$1$$$ and $$$2\\cdot10^5$$$, inclusive. The first (leftmost) digit is not equal to 0.",
+    "memory_limit": 256,
+    "note": "In the first example, an example set of optimal cuts on the number is 3|1|21.\n\nIn the second example, you do not need to make any cuts. The specified number 6 forms one number that is divisible by $$$3$$$.\n\nIn the third example, cuts must be made between each pair of digits. As a result, Polycarp gets one digit 1 and $$$33$$$ digits 0. Each of the $$$33$$$ digits 0 forms a number that is divisible by $$$3$$$.\n\nIn the fourth example, an example set of optimal cuts is 2|0|1|9|201|81. The numbers $$$0$$$, $$$9$$$, $$$201$$$ and $$$81$$$ are divisible by $$$3$$$.",
+    "output_format": "Print the maximum number of numbers divisible by $$$3$$$ that Polycarp can get by making vertical cuts in the given number $$$s$$$.",
+    "rating": 1500,
+    "tags": [
+      "dp",
+      "greedy",
+      "number theory"
+    ],
+    "time_limit": 3,
+    "title": "Polycarp and Div 3"
+  },
+  {
+    "contest_id": "977",
+    "contest_name": "Codeforces Round 479 (Div. 3)",
+    "contest_start_year": 2018,
+    "description": "You are given an undirected graph consisting of $$$n$$$ vertices and $$$m$$$ edges. Your task is to find the number of connected components which are cycles.\n\nHere are some definitions of graph theory.\n\nAn undirected graph consists of two sets: set of nodes (called vertices) and set of edges. Each edge connects a pair of vertices. All edges are bidirectional (i.e. if a vertex $$$a$$$ is connected with a vertex $$$b$$$, a vertex $$$b$$$ is also connected with a vertex $$$a$$$). An edge can't connect vertex with itself, there is at most one edge between a pair of vertices.\n\nTwo vertices $$$u$$$ and $$$v$$$ belong to the same connected component if and only if there is at least one path along edges connecting $$$u$$$ and $$$v$$$.\n\nA connected component is a cycle if and only if its vertices can be reordered in such a way that:\n\n- the first vertex is connected with the second vertex by an edge,\n- the second vertex is connected with the third vertex by an edge,\n- ...\n- the last vertex is connected with the first vertex by an edge,\n- all the described edges of a cycle are distinct.\n\nA cycle doesn't contain any other edges except described above. By definition any cycle contains three or more vertices.\n\nThere are $$$6$$$ connected components, $$$2$$$ of them are cycles: $$$[7, 10, 16]$$$ and $$$[5, 11, 9, 15]$$$.",
+    "editorial": "Let's solve this problem for each connected component of the given graph separately.\nIt is easy to see that the connected component is a cycle iff the degree of each its vertex equals to $$$2$$$.\nSo the solution is to count the number of components such that every vertex in the component has degree $$$2$$$.\nThe connected components of the graph can be easily found by simple dfs or bfs.",
+    "examples": [
+      {
+        "input": "5 4\n1 2\n3 4\n5 4\n3 5",
+        "output": "1"
+      },
+      {
+        "input": "17 15\n1 8\n1 12\n5 11\n11 9\n9 15\n15 5\n4 13\n3 13\n4 3\n10 16\n7 10\n16 7\n14 3\n14 4\n17 6",
+        "output": "2"
+      }
+    ],
+    "id": "977/E",
+    "index": "E",
+    "input_format": "The first line contains two integer numbers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$, $$$0 \\le m \\le 2 \\cdot 10^5$$$) — number of vertices and edges.\n\nThe following $$$m$$$ lines contains edges: edge $$$i$$$ is given as a pair of vertices $$$v_i$$$, $$$u_i$$$ ($$$1 \\le v_i, u_i \\le n$$$, $$$u_i \\ne v_i$$$). There is no multiple edges in the given graph, i.e. for each pair ($$$v_i, u_i$$$) there no other pairs ($$$v_i, u_i$$$) and ($$$u_i, v_i$$$) in the list of edges.",
+    "memory_limit": 256,
+    "note": "In the first example only component $$$[3, 4, 5]$$$ is also a cycle.\n\nThe illustration above corresponds to the second example.",
+    "output_format": "Print one integer — the number of connected components which are also cycles.",
+    "rating": 1500,
+    "tags": [
+      "dfs and similar",
+      "dsu",
+      "graphs"
+    ],
+    "time_limit": 2,
+    "title": "Cyclic Components"
+  }
+]

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <title>YTP：60 秒反思</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <span class="logo">YTP</span>
+    <div>
+      <div class="title">60 秒反思</div>
+      <div class="sub" id="status">連線中…</div>
+    </div>
+  </header>
+
+  <section id="problem-box" class="box">
+    <div class="k">這一題</div>
+    <div id="problem-name" class="problem-name">—</div>
+    <div id="problem-note" class="note"></div>
+    <div id="picker" hidden>
+      <input id="problem-search" list="problem-options" placeholder="輸入題號或題名，例如 CF1005D" aria-label="從資料包選一題">
+      <datalist id="problem-options"></datalist>
+    </div>
+  </section>
+
+  <form id="form" class="box">
+    <div class="k">剛剛卡在哪？</div>
+    <div class="choices" role="radiogroup">
+      <label><input type="radio" name="stuck" value="想不到做法" required> 想不到做法</label>
+      <label><input type="radio" name="stuck" value="想到了但寫不出來或一直 WA"> 寫不出來／一直 WA</label>
+      <label><input type="radio" name="stuck" value="讀錯題或漏看限制"> 讀錯題</label>
+      <label><input type="radio" name="stuck" value="沒有卡，很順"> 沒卡</label>
+    </div>
+    <div class="k">一句話：解開這題的關鍵觀察是什麼？</div>
+    <textarea id="observation" rows="3" required placeholder="例如：每個連通塊是環 ⇔ 所有點的度數都是 2"></textarea>
+    <details>
+      <summary>開發者選項</summary>
+      <label class="dev">練習出錯處理
+        <select id="simulate">
+          <option value="">正常</option>
+          <option value="bad_json">第一次格式壞掉</option>
+          <option value="timeout">逾時</option>
+        </select>
+      </label>
+    </details>
+    <button id="submit" type="submit">整理成洞見卡</button>
+  </form>
+
+  <section id="result" aria-live="polite"></section>
+
+  <section class="box">
+    <div class="k">我的洞見卡 <span id="card-count"></span></div>
+    <ul id="cards"></ul>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

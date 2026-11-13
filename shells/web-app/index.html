@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YTP Starter Kit · Web 骨架</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">YTP</span>
+      <div>
+        <div class="brand-title">Web 應用程式骨架</div>
+        <div class="brand-sub">資料包 → 使用者輸入 → LLM → 程式檢查 → 介面顯示</div>
+      </div>
+    </div>
+    <div class="status" id="status">連線中…</div>
+  </header>
+
+  <main class="layout">
+    <!-- 左：資料包 -->
+    <aside class="panel list-panel">
+      <div class="panel-head">
+        <h2>資料包題目</h2>
+        <button id="random-btn" class="btn ghost" title="模擬評審抽測：隨機抽一題">🎲 隨機抽一題</button>
+      </div>
+      <div class="filters">
+        <input id="search" type="search" placeholder="搜尋題號、題名或標籤（如 dp）" aria-label="搜尋題目">
+        <select id="band" aria-label="難度">
+          <option value="">全部難度</option>
+          <option value="800-1200">800–1200</option>
+          <option value="1300-1700">1300–1700</option>
+          <option value="1800-2400">1800–2400</option>
+        </select>
+      </div>
+      <div id="list-count" class="muted small"></div>
+      <ul id="problem-list" class="problem-list" aria-label="題目列表"></ul>
+    </aside>
+
+    <!-- 中：題目內容 -->
+    <section class="panel main-panel">
+      <div id="empty" class="empty">從左邊選一題開始。</div>
+      <article id="problem" hidden>
+        <div class="problem-head">
+          <div>
+            <div class="pid" id="p-id"></div>
+            <h1 id="p-title"></h1>
+          </div>
+          <div class="meta" id="p-meta"></div>
+        </div>
+        <nav class="tabs" role="tablist">
+          <button class="tab active" data-tab="statement" role="tab">題敘</button>
+          <button class="tab" data-tab="submissions" role="tab">提交紀錄 <span id="sub-count" class="count"></span></button>
+          <button class="tab" data-tab="judge" role="tab">跑範例測資</button>
+        </nav>
+        <div class="tab-body" id="tab-statement"><div id="p-statement" class="md"></div></div>
+        <div class="tab-body" id="tab-submissions" hidden>
+          <ul id="sub-list" class="sub-list"></ul>
+          <pre id="sub-code" class="code" hidden></pre>
+        </div>
+        <div class="tab-body" id="tab-judge" hidden>
+          <div class="judge-bar">
+            <select id="judge-lang" aria-label="語言">
+              <option value="cpp">C++17</option>
+              <option value="python">Python 3</option>
+            </select>
+            <button id="judge-btn" class="btn">用範例測資測試</button>
+            <span class="muted">在你自己的電腦上編譯執行</span>
+          </div>
+          <textarea id="judge-code" spellcheck="false" placeholder="把程式碼貼在這裡…"></textarea>
+          <div id="judge-result"></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 右：AI（規範三示範） -->
+    <aside class="panel ai-panel">
+      <h2>AI 提示 <span class="tag-rule">規範三示範</span></h2>
+      <p class="muted small">只給一層方向，不給答案。輸出是固定格式的 JSON，經過程式檢查才顯示。</p>
+      <div class="ai-controls">
+        <label>提示層級
+          <select id="hint-level">
+            <option value="1">1：最模糊</option>
+            <option value="2">2：中間</option>
+            <option value="3">3：接近關鍵觀察</option>
+          </select>
+        </label>
+        <label>練習出錯處理
+          <select id="simulate">
+            <option value="">正常</option>
+            <option value="bad_json">第一次格式壞掉</option>
+            <option value="timeout">逾時</option>
+          </select>
+        </label>
+      </div>
+      <button id="hint-btn" class="btn primary" disabled>給我一層提示</button>
+      <div id="ai-out" class="ai-out" aria-live="polite"></div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
