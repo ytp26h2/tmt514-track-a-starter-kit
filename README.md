@@ -12,6 +12,7 @@
 
 ```
 starter-kit/
+├─ LICENSE                       # 程式碼採 MIT 授權；資料包另依 data/README.md
 ├─ AGENTS.md、CLAUDE.md          # 給 AI 程式助理看的說明（Codex、Cursor、Claude Code…）
 ├─ skills/ytp-starter-kit/       # 建議的 SKILL.md：開發這個作品時，AI 助理該知道的規範與做法
 ├─ shells/                       # 三種入口格式的骨架（規範一），都不用安裝、不用編譯
@@ -121,8 +122,10 @@ mkdir -p .claude/skills && cp -r skills/ytp-starter-kit .claude/skills/
 >
 > 入口格式（VS Code 擴充套件、Chrome 外掛程式、Web 應用程式）11/28 和 12/12 會各指定一種。`shells/` 的骨架只是起點，請各隊賽前把三種都跑過一次，確定自己的電腦環境沒問題；想換成 React、TypeScript 等框架也可以，記得 API key 不要放進前端。
 
-## 資料來源與授權
+## 授權與資料來源
 
+- 程式碼採 [MIT 授權](LICENSE)，著作權人為 YTP 少年圖靈計畫：可以自由使用、修改、再散布，只要保留 `LICENSE` 裡的版權與授權聲明。
+- 資料包不適用 MIT：`data/sample-v0.1/`、`data/cf1000-v0.1/`、`data/_build/raw/` 依下列來源的授權。`data/` 裡的程式（`check_format.py`、`_build/*.py`）仍採 MIT。
 - `data/` 的題目、題解取自 Hugging Face 的 [open-r1/codeforces](https://huggingface.co/datasets/open-r1/codeforces)，提交程式碼取自 [open-r1/codeforces-submissions](https://huggingface.co/datasets/open-r1/codeforces-submissions)，兩者皆採 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hant) 授權。
 - 我們做過修改：挑選部分題目與提交、轉換成資料包格式 v0.1、整理題敘的數學式標記，並加上合成的使用者與練習時間軸。細節見 [`data/README.md`](data/README.md)。
-- 題目原文版權屬 Codeforces 與各題作者，程式碼屬原提交者。資料包僅供 YTP 黑客松教學與練習使用；若有權利人要求移除，請聯絡主辦方。
+- 題目原文版權屬 Codeforces 與各題作者，提交的程式碼屬原提交者。資料包是為 YTP 黑客松教學與練習整理的；若有權利人要求移除，請聯絡主辦方。
