@@ -120,3 +120,9 @@ mkdir -p .claude/skills && cp -r skills/ytp-starter-kit .claude/skills/
 > 這些模板只是起點，**不必照用**。最好的作品通常會把模板拆掉重組。
 >
 > 入口格式（VS Code 擴充套件、Chrome 外掛程式、Web 應用程式）11/28 和 12/12 會各指定一種。`shells/` 的骨架只是起點，請各隊賽前把三種都跑過一次，確定自己的電腦環境沒問題；想換成 React、TypeScript 等框架也可以，記得 API key 不要放進前端。
+
+## 資料來源與授權
+
+- `data/` 的題目、題解取自 Hugging Face 的 [open-r1/codeforces](https://huggingface.co/datasets/open-r1/codeforces)，提交程式碼取自 [open-r1/codeforces-submissions](https://huggingface.co/datasets/open-r1/codeforces-submissions)，兩者皆採 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hant) 授權。
+- 我們做過修改：挑選部分題目與提交、轉換成資料包格式 v0.1、整理題敘的數學式標記，並加上合成的使用者與練習時間軸。細節見 [`data/README.md`](data/README.md)。
+- 題目原文版權屬 Codeforces 與各題作者，程式碼屬原提交者。資料包僅供 YTP 黑客松教學與練習使用；若有權利人要求移除，請聯絡主辦方。

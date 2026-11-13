@@ -129,7 +129,8 @@ problems = [json.loads(line) for line in open("sample-v0.1/problems.jsonl", enco
 
 ## 出處與授權
 
-- 題目、題解：[open-r1/codeforces](https://huggingface.co/datasets/open-r1/codeforces)（CC BY 4.0）
-- 提交程式碼：[open-r1/codeforces-submissions](https://huggingface.co/datasets/open-r1/codeforces-submissions)（CC BY 4.0），`selected_incorrect` 與 `selected_accepted` 子集
+- 題目、題解：[open-r1/codeforces](https://huggingface.co/datasets/open-r1/codeforces)（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hant)）
+- 提交程式碼：[open-r1/codeforces-submissions](https://huggingface.co/datasets/open-r1/codeforces-submissions)（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hant)），`selected_incorrect` 與 `selected_accepted` 子集
+- 本資料包是修改後的版本：挑選部分題目與提交、轉換成格式 v0.1、題敘數學式標記改為 `$…$`、`checker` 欄位由程式推斷，並加上合成的使用者與時間軸（見上方「使用前請先知道」）。
 - 題目原文版權屬 Codeforces 與各題作者，程式碼屬原提交者。本資料包僅供 YTP 黑客松教學與練習使用；若有權利人要求移除，請聯絡主辦方。
 - 擷取日期：`sample-v0.1` 為 2026-11-13，`cf1000-v0.1` 為 2026-11-14。
